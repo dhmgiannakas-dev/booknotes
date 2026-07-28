@@ -1,0 +1,77 @@
+<!-- HEADER -->
+<%- include('partials/header') %>
+
+  <!-- MAIN CONTENT -->
+  <div class="container">
+    <h1 class="h1-title">BookNotes</h1>
+    <h2 class="h2-title">Welcome to my personal notes!</h2>
+    <form class="s-form" action="/add" method="post" enctype="multipart/form-data">
+      <div class="mb-3 me-3">
+        <input type="text" name="title" class="form-control" id="book-title" placeholder="Title..." required>
+      </div>
+      <div class="mb-3 me-3">
+        <input type="text" name="author" class="form-control" id="author" placeholder="Author..." required>
+      </div>
+      <div class="mb-3 me-3">
+        <input type="text" name="genre" class="form-control" id="genre" placeholder="Genre..." required>
+      </div>
+      <div class="mb-3 me-3">
+        <textarea class="desc-text" id="description" name="description" rows="5" cols="40"
+          placeholder="Type your description here..."></textarea>
+      </div>
+      <div class="mb-3 me-3 d-flex align-items-center gap-2">
+        <input type="file" name="image" id="image" accept="image/*" hidden>
+
+        <label for="image" class="upload-box">
+          <span class="text">Choose image</span>
+        </label>
+
+        <span id="fileName"></span>
+
+        <button id="clearBtn" type="button" onclick="clearImage()" class="clear-btn">
+          <i class="image-but bi bi-x"></i>
+        </button>
+      </div>
+      <button type="submit">Add</button>
+    </form>
+  </div>
+
+
+  <!-- Book section-->
+  <div class="container book-cont">
+    <h3>Books</h3>
+    <% if (books.length> 0) { %>
+      <% books.forEach(book=> { %>
+        <div id="book-<%= book.id %>" class="book-card">
+          <ul class="list-group mb-3">
+            <li class="list-group-item">
+              <% if (book.image) { %>
+                <img src="/image/<%= book.id %>" alt="<%= book.title %>" />
+                <% } else { %>
+                  <p>No image available</p>
+                  <% } %> <br>
+                    <strong>Title:</strong>
+                    <%= book.title %> <br>
+                      <strong>Author:</strong>
+                      <%= book.author %> <br>
+                        <strong>Genre:</strong>
+                        <%= book.genre %> <br>
+                          <strong>Description:</strong> '<%= book.description %>'
+            </li>
+          </ul>
+
+          <button class="delete-btn" type="button" onclick="deleteBook(<%= book.id %>)">
+    <i class="book-but bi bi-x"></i>
+</button>
+
+        </div>
+        <% }); %>
+          <% } else { %>
+            <p>No books added yet.</p>
+            <% } %>
+  </div>
+
+
+
+  <!-- FOOTER -->
+  <%- include('partials/footer') %>
