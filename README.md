@@ -2,10 +2,6 @@
 
 BookNotes is a full-stack web application that allows users to create and manage their personal book collection. Users can add books with details such as title, author, genre, description, and cover image, then view or remove them whenever they want.
 
-## 🌐 Live Demo
-
-👉 https://booknotes-i7lk.onrender.com
-
 ## ✨ Features
 
 - Add new books
@@ -26,9 +22,6 @@ BookNotes is a full-stack web application that allows users to create and manage
 - CSS3
 - JavaScript
 
-## 📸 Screenshots
-
-> You can add screenshots of the application here.
 
 ## 🚀 Installation
 
